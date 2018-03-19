@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VerificaWS1.3</string>
+    <string name="atualiza">Atualiza</string>
+    <string name="Sair">Sair</string>
+    <string name="Cadastrar">Cadastrar</string>
+    <string name="carregando">carregando</string>
+</resources>
