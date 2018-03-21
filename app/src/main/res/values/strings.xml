@@ -4,4 +4,8 @@
     <string name="Sair">Sair</string>
     <string name="Cadastrar">Cadastrar</string>
     <string name="carregando">carregando</string>
+    <string name="EndereçoURL">Endereço URL</string>
+    <string name="NomeWebService">Nome WebService</string>
+    <string name="salvar">Salvar</string>
+    <string name="ativo">Ativo</string>
 </resources>
