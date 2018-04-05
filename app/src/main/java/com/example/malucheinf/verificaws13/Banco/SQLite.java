@@ -18,7 +18,7 @@ public class SQLite extends SQLiteOpenHelper{
     public static final String nome = "nome";
     public static final String url = "url";
     public static final String Ativo = "ativo";
-    public static final int VERSAO = 15;
+    public static final int VERSAO = 16;
     public static final int VERSAO_NEW = 6;
 
     public SQLite(Context context){

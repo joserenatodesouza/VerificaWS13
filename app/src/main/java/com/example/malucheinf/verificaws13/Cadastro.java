@@ -61,25 +61,28 @@ public class Cadastro extends AppCompatActivity {
         //Consulta Dados
         BancoController crud = new BancoController(getBaseContext());
         Cursor cursor = crud.carregaDados();
+        Log.i("Cadastro", String.valueOf(cursor));
 
-        ArrayList<String> listaAAAA = crud.getlista(cursor);
-        Log.i("Unifebe", "tidade =" + listaAAAA.size());
-        Log.i("Unifebe", cursor.getColumnName(0));
-        Log.i("Unifebe", cursor.getColumnName(1));
-        Log.i("Unifebe", cursor.getColumnName(2));
-        Log.i("Unifebe", cursor.getColumnName(3));
-        String[] nomeCampos = new String[] {SQLite.nome, SQLite.Ativo};
+
+            ArrayList<String> listaAAAA = crud.getlista(cursor);
+            Log.i("Unifebe", "tidade =" + listaAAAA.size());
+            Log.i("Unifebe", cursor.getColumnName(0));
+            Log.i("Unifebe", cursor.getColumnName(1));
+            Log.i("Unifebe", cursor.getColumnName(2));
+            Log.i("Unifebe", cursor.getColumnName(3));
+//            String[] nomeCampos = new String[]{SQLite.nome, SQLite.Ativo};
 //        //String[] nomeCampos = new String[] {"id","nome","url","ativo"};
-        int[] idViews = new int[] {R.id.nome, R.id.ativo};
+  //          int[] idViews = new int[]{R.id.nome, R.id.ativo};
 
-        Log.i("Cadastro","Antes do cursor adapter");
+            Log.i("Cadastro", "Antes do cursor adapter");
 
 //        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(getBaseContext(), R.layout.listview, cursor,nomeCampos,idViews, 0);
 
-        Log.i("Cadastro","depois do cursor adapter");
-        lista = (ListView)findViewById(R.id.listView);
-        ArrayAdapter x = new ArrayAdapter(Cadastro.this,android.R.layout.simple_list_item_1,listaAAAA);
-        lista.setAdapter(x);
+            Log.i("Cadastro", "depois do cursor adapter");
+            lista = (ListView) findViewById(R.id.listView);
+            ArrayAdapter x = new ArrayAdapter(Cadastro.this, android.R.layout.simple_list_item_1, listaAAAA);
+            lista.setAdapter(x);
+
     }
 
 }

@@ -4,6 +4,7 @@ package com.example.malucheinf.verificaws13;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,19 +14,27 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.malucheinf.verificaws13.Banco.BancoController;
+import com.example.malucheinf.verificaws13.Banco.SQLite;
 import com.example.malucheinf.verificaws13.WebService.WebServicesJSON;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
 
     private Toolbar toolbar;
     private String WebServiceURL = "http://matrixnet.labvw.com.br:8080/matrixnet/wsrvProtocoloMatrix_v3.HACCR.svc?wsdl";
+    private ListView lista;
+
     //Layout
     private TextView resultado;
     private Button Atualiza;
@@ -54,6 +63,7 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        ConsultaDados();
 
     }
 //Menu cria e option
@@ -136,5 +146,22 @@ public class Home extends AppCompatActivity {
             return null;
         }
 
+    }
+
+    public String ConsultaDados(){
+        //Consulta Dados
+        String url = "";
+        BancoController crud = new BancoController(getBaseContext());
+        Cursor cursor = crud.carregaDados();
+
+        ArrayList<String> listaAAAA = crud.getlista(cursor);
+
+        lista = (ListView) findViewById(R.id.listView);
+        ArrayAdapter x = new ArrayAdapter(Home.this, android.R.layout.simple_list_item_1, listaAAAA);
+        lista.setAdapter(x);
+        Log.i("Unifebe", cursor.getColumnName(2));
+        //url = cursor.getString(2);
+        Log.i("Home", url);
+        return url;
     }
 }
