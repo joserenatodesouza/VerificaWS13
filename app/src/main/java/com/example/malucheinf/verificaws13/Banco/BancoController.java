@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,16 +44,30 @@ public class BancoController {
 
     }
 
+
+    public ArrayList<String> getlista(Cursor r ){
+        ArrayList<String> lista = new ArrayList<>();
+        r.moveToFirst();
+        do{
+            lista.add(r.getString(1));
+        }while (r.moveToNext());
+        return lista;
+
+    }
     public Cursor carregaDados(){
         Cursor cursor;
         String[] campos =  {SQLite.nome, SQLite.Ativo};
         db = banco.getReadableDatabase();
-        cursor = db.query(SQLite.TABELA, campos, null, null, null, null, null, null);
+        //cursor = db.query(SQLite.TABELA, campos, null, null, null, null, null, null);
+        String sql = "Select * from webservices";
+        cursor = banco.getWritableDatabase().rawQuery(sql,null,null);
+        //cursor = db.rawQuery(sql,null);
+        Log.i("Unifebe", "tidade = "+cursor.getColumnCount());
 
-        if(cursor!=null){
+        /*if(cursor!=null){
             cursor.moveToFirst();
         }
-        db.close();
+        db.close();*/
         return cursor;
     }
 }

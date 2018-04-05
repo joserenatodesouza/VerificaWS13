@@ -14,11 +14,11 @@ import android.util.Log;
 public class SQLite extends SQLiteOpenHelper{
     public static final String NOME_BANCO = "webservice.db";
     public static final String TABELA = "webservices";
-    public static final String ID = "id";
+    public static final String ID = "_id";
     public static final String nome = "nome";
     public static final String url = "url";
     public static final String Ativo = "ativo";
-    public static final int VERSAO = 14;
+    public static final int VERSAO = 15;
     public static final int VERSAO_NEW = 6;
 
     public SQLite(Context context){

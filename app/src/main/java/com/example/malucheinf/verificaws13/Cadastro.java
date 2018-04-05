@@ -19,6 +19,7 @@ import com.example.malucheinf.verificaws13.Banco.Model;
 import com.example.malucheinf.verificaws13.Banco.SQLite;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -61,17 +62,24 @@ public class Cadastro extends AppCompatActivity {
         BancoController crud = new BancoController(getBaseContext());
         Cursor cursor = crud.carregaDados();
 
+        ArrayList<String> listaAAAA = crud.getlista(cursor);
+        Log.i("Unifebe", "tidade =" + listaAAAA.size());
+        Log.i("Unifebe", cursor.getColumnName(0));
+        Log.i("Unifebe", cursor.getColumnName(1));
+        Log.i("Unifebe", cursor.getColumnName(2));
+        Log.i("Unifebe", cursor.getColumnName(3));
         String[] nomeCampos = new String[] {SQLite.nome, SQLite.Ativo};
 //        //String[] nomeCampos = new String[] {"id","nome","url","ativo"};
         int[] idViews = new int[] {R.id.nome, R.id.ativo};
 
         Log.i("Cadastro","Antes do cursor adapter");
 
-        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(getBaseContext(), R.layout.listview, cursor,nomeCampos,idViews, 0);
+//        SimpleCursorAdapter adaptador = new SimpleCursorAdapter(getBaseContext(), R.layout.listview, cursor,nomeCampos,idViews, 0);
 
         Log.i("Cadastro","depois do cursor adapter");
         lista = (ListView)findViewById(R.id.listView);
-        lista.setAdapter(adaptador);
+        ArrayAdapter x = new ArrayAdapter(Cadastro.this,android.R.layout.simple_list_item_1,listaAAAA);
+        lista.setAdapter(x);
     }
 
 }
